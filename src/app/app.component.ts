@@ -21,7 +21,7 @@ export class AppComponent {
         questionNo: i,
         answered: false,
         mark: 0,
-        status: 'unchecked'
+        status: 'unanswered'
       });
     }
     console.log(this.arrayQuestion);
@@ -36,6 +36,11 @@ export class AppComponent {
     const questionIndex = this.arrayQuestion.findIndex(obj => obj.questionNo === question.questionNo);
     this.arrayQuestion[questionIndex].mark = 0;
     this.arrayQuestion[questionIndex].status = 'wrong';
+  }
+  onAnswer(question){
+    const questionIndex = this.arrayQuestion.findIndex(obj => obj.questionNo === question.questionNo);
+    this.arrayQuestion[questionIndex].mark = 0;
+    this.arrayQuestion[questionIndex].status = 'answered';
   }
 
 }

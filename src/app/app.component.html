@@ -29,10 +29,10 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Option 1</th>
-            <th scope="col">Option 2</th>
-            <th scope="col">Option 3</th>
-            <th scope="col">Option 4</th>
+            <th scope="col">Opt 1</th>
+            <th scope="col">Opt 2</th>
+            <th scope="col">Opt 3</th>
+            <th scope="col">Opt 4</th>
             <th scope="col">Correct</th>
             <th scope="col">Wrong</th>
           </tr>
@@ -42,15 +42,16 @@
             <tr [ngClass]="{
               'test': true,
               'table-success': (question.status === 'correct'),
-              'table-danger': (question.status === 'wrong')
+              'table-danger': (question.status === 'wrong'),
+              'table-warning': (question.status === 'answered')
           }">
               <th scope="row">{{question.questionNo}}</th>
-              <td><input type="radio" name="question{{question.questionNo}}}" value="1"></td>
-              <td><input type="radio" name="question{{question.questionNo}}" value="2"></td>
-              <td><input type="radio" name="question{{question.questionNo}}" value="3"></td>
-              <td><input type="radio" name="question{{question.questionNo}}" value="4"></td>
-              <td><button (click)="onCorrect(question)">Correct</button></td>
-              <td><button (click)="onWrong(question)">Wrong</button></td>
+              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="1"></td>
+              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="2"></td>
+              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="3"></td>
+              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="4"></td>
+              <td><button type="button" class="btn btn-success" (click)="onCorrect(question)">Correct</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="onWrong(question)">Wrong</button></td>
             </tr>
           </ng-container>
         </tbody>
