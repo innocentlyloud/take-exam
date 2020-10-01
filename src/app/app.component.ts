@@ -50,6 +50,9 @@ export class AppComponent {
     this.arrayQuestion[questionIndex].status = 'answered';
   }
   openModal(template: TemplateRef<any>) {
+    this.wrongAnswer = [];
+    this.correctAnswer = [];
+    this.unanswered = [];
     this.arrayQuestion.forEach(item => {
       if (item.status === 'wrong') {
         this.wrongAnswer.push(item.questionNo);
