@@ -8,7 +8,7 @@
       <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
         <div class="form-group">
           <label for="name">Enter topic name</label>
-          <input type="text" class="form-control" id="name"
+          <input type="text" class="form-control" id="topic"
                  required
                  [(ngModel)]="topic" name="topic"
                  #topics="ngModel">
@@ -57,10 +57,10 @@
               'table-warning': (question.status === 'answered')
           }">
               <th scope="row">{{question.questionNo}}</th>
-              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="1"></td>
-              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="2"></td>
-              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="3"></td>
-              <td (click)="onAnswer(question)"><input type="radio" name="question{{question.questionNo}}" value="4"></td>
+              <td (click)="onAnswer(question, 1)"><input type="radio" name="question{{question.questionNo}}" value="1" [checked]="question.selectedOptions === 1 ? true : false"></td>
+              <td (click)="onAnswer(question, 2)"><input type="radio" name="question{{question.questionNo}}" value="2" [checked]="question.selectedOptions === 2 ? true : false"></td>
+              <td (click)="onAnswer(question, 3)"><input type="radio" name="question{{question.questionNo}}" value="3" [checked]="question.selectedOptions === 3 ? true : false"></td>
+              <td (click)="onAnswer(question, 4)"><input type="radio" name="question{{question.questionNo}}" value="4" [checked]="question.selectedOptions === 4 ? true : false"></td>
               <td><button type="button" class="btn btn-success" (click)="onCorrect(question)">Correct</button></td>
               <td><button type="button" class="btn btn-danger" (click)="onWrong(question)">Wrong</button></td>
             </tr>
